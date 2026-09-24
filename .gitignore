@@ -1,0 +1,26 @@
+# Terraform working directory
+.terraform/
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files - may contain sensitive values
+*.tfvars
+
+# Exception: allow the example file
+!terraform.tfvars.example
+
+# Terraform plan files
+*.tfplan
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

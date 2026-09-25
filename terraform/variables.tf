@@ -78,3 +78,12 @@ variable "cluster_public_access_cidrs" {
   # Replace with your public IP/32 before terraform apply.
   default = ["0.0.0.0/0"]
 }
+
+variable "cluster_endpoint_public_access_cidrs" {
+  description = "CIDR ranges allowed to access the public EKS Kubernetes API endpoint"
+  type        = list(string)
+
+  # Temporary default for planning.
+  # Before terraform apply, replace this with your public IP/32.
+  default = ["0.0.0.0/0"]
+}

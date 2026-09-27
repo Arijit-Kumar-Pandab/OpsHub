@@ -30,8 +30,14 @@ resource "aws_eks_addon" "vpc_cni" {
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "OVERWRITE"
 
+  pod_identity_association {
+    role_arn        = aws_iam_role.vpc_cni.arn
+    service_account = "aws-node"
+  }
+
   depends_on = [
-    aws_eks_node_group.system
+    aws_eks_node_group.system,
+    aws_iam_role_policy_attachment.vpc_cni
   ]
 }
 

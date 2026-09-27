@@ -77,8 +77,7 @@ resource "aws_eks_node_group" "system" {
 
   depends_on = [
     aws_iam_role_policy_attachment.eks_node_worker_policy,
-    aws_iam_role_policy_attachment.eks_node_ecr_policy,
-    aws_iam_role_policy_attachment.eks_node_cni_policy
+    aws_iam_role_policy_attachment.eks_node_ecr_policy
   ]
 
   tags = {

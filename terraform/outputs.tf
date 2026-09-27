@@ -72,3 +72,23 @@ output "worker_ecr_repository_url" {
   description = "ECR repository URL for the OpsHub worker"
   value       = aws_ecr_repository.worker.repository_url
 }
+
+output "vpc_cni_role_arn" {
+  description = "IAM role ARN used by the VPC CNI through EKS Pod Identity"
+  value       = aws_iam_role.vpc_cni.arn
+}
+
+output "aws_load_balancer_controller_role_arn" {
+  description = "IAM role ARN used by the AWS Load Balancer Controller"
+  value       = aws_iam_role.aws_load_balancer_controller.arn
+}
+
+output "aws_load_balancer_controller_policy_arn" {
+  description = "IAM policy ARN for the AWS Load Balancer Controller"
+  value       = aws_iam_policy.aws_load_balancer_controller.arn
+}
+
+output "aws_load_balancer_controller_pod_identity_association_id" {
+  description = "EKS Pod Identity association ID for the AWS Load Balancer Controller"
+  value       = aws_eks_pod_identity_association.aws_load_balancer_controller.association_id
+}

@@ -79,3 +79,29 @@ resource "aws_eks_addon" "pod_identity_agent" {
     aws_eks_node_group.system
   ]
 }
+
+data "aws_eks_addon_version" "ebs_csi" {
+  addon_name         = "aws-ebs-csi-driver"
+  kubernetes_version = aws_eks_cluster.opshub.version
+  most_recent        = true
+}
+
+resource "aws_eks_addon" "ebs_csi" {
+  cluster_name  = aws_eks_cluster.opshub.name
+  addon_name    = "aws-ebs-csi-driver"
+  addon_version = data.aws_eks_addon_version.ebs_csi.version
+
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "OVERWRITE"
+
+  pod_identity_association {
+    role_arn        = aws_iam_role.ebs_csi.arn
+    service_account = "ebs-csi-controller-sa"
+  }
+
+  depends_on = [
+    aws_eks_node_group.system,
+    aws_iam_role_policy_attachment.ebs_csi,
+    aws_eks_addon.pod_identity_agent
+  ]
+}

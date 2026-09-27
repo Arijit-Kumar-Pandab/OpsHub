@@ -4,7 +4,7 @@ provider "aws" {
 
 provider "helm" {
   kubernetes = {
-    host                   = data.aws_eks_cluster.opshub.endpoint
+    host = data.aws_eks_cluster.opshub.endpoint
     cluster_ca_certificate = base64decode(
       data.aws_eks_cluster.opshub.certificate_authority[0].data
     )

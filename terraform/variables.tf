@@ -87,3 +87,8 @@ variable "cluster_endpoint_public_access_cidrs" {
   # Before terraform apply, replace this with your public IP/32.
   default = ["0.0.0.0/0"]
 }
+
+variable "vault_kms_key_id" {
+  description = "AWS KMS key ID used by Vault for auto-unseal"
+  type        = string
+}

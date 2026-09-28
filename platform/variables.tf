@@ -9,3 +9,8 @@ variable "cluster_name" {
   type        = string
   default     = "opshub-dev-eks"
 }
+
+variable "vault_kms_key_id" {
+  description = "AWS KMS key ID used by Vault for auto-unseal"
+  type        = string
+}

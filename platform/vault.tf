@@ -80,6 +80,11 @@ resource "helm_release" "vault" {
               }
 
               service_registration "kubernetes" {}
+
+              seal "awskms" {
+                region     = "ap-south-1"
+                kms_key_id = "${var.vault_kms_key_id}"
+              }
             EOT
           }
         }

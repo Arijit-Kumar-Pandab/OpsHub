@@ -97,3 +97,18 @@ output "ebs_csi_role_arn" {
   description = "IAM role ARN used by the EBS CSI driver through EKS Pod Identity"
   value       = aws_iam_role.ebs_csi.arn
 }
+
+output "vault_kms_key_id" {
+  description = "KMS key ID used for Vault auto-unseal"
+  value       = aws_kms_key.vault.key_id
+}
+
+output "vault_kms_key_arn" {
+  description = "KMS key ARN used for Vault auto-unseal"
+  value       = aws_kms_key.vault.arn
+}
+
+output "vault_kms_role_arn" {
+  description = "IAM role ARN used by Vault for AWS KMS auto-unseal"
+  value       = aws_iam_role.vault_kms.arn
+}

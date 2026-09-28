@@ -38,6 +38,10 @@ resource "helm_release" "vault" {
           type = "ClusterIP"
         }
 
+        serviceAccount = {
+          create = true
+          name   = "vault"
+        }
         # -------------------------------------------------
         # Persistent storage
         # -------------------------------------------------

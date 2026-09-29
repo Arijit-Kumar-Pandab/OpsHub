@@ -15,3 +15,15 @@ variable "vault_addr" {
   type        = string
   default     = "http://127.0.0.1:8200"
 }
+
+variable "opshub_namespace" {
+  description = "Kubernetes namespace used by the OpsHub application"
+  type        = string
+  default     = "opshub"
+}
+
+variable "opshub_api_service_account" {
+  description = "Kubernetes service account used by the OpsHub API"
+  type        = string
+  default     = "opshub-api"
+}

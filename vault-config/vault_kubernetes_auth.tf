@@ -13,7 +13,7 @@ resource "vault_kubernetes_auth_backend_config" "kubernetes" {
 
   kubernetes_host = data.aws_eks_cluster.opshub.endpoint
 
-  use_annotations_as_alias_metadata = true
+  # use_annotations_as_alias_metadata = true
 
   # Vault runs inside Kubernetes, so we intentionally do not
   # provide token_reviewer_jwt or kubernetes_ca_cert here.

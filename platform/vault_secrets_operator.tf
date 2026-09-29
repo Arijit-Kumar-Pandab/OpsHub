@@ -72,6 +72,24 @@ resource "helm_release" "vault_secrets_operator" {
       csi = {
         enabled = false
       }
+
+      serviceMonitor = {
+        enabled = true
+
+        selectors = {
+          release = "kube-prometheus-stack"
+        }
+
+        scheme = "https"
+
+        port = "https"
+
+        path = "/metrics"
+
+        interval = "30s"
+
+        scrapeTimeout = "10s"
+      }
     })
   ]
 
